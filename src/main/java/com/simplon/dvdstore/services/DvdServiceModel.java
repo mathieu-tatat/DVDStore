@@ -15,5 +15,4 @@ public class DvdServiceModel {
     private String name;
     private String genre;
     private Optional <Long> id;
-
 }

@@ -6,9 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Optional;
-
-
 @Entity
 @NoArgsConstructor
 @Getter
@@ -27,5 +24,4 @@ public class DvdRepositoryModel {
         this.name = name;
         this.genre = genre;
     }
-
 }

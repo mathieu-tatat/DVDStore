@@ -11,9 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DvdStroreApplication{
 	private static final Logger log = LoggerFactory.getLogger(DvdRepositoryModel.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(DvdStroreApplication.class);
 	}
-
 }
