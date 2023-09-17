@@ -6,14 +6,17 @@ import lombok.NoArgsConstructor;
 
 import java.util.Optional;
 
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DvdServiceModel {
+public class ClientServiceModele {
 
-    private String name;
-    private String genre;
-    private Long quantity;
+    private String nom;
+    private String prenom;
+    private String telephone;
     private Optional <Long> id;
+
+
 
 }

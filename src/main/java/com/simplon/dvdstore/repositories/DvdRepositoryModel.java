@@ -19,9 +19,12 @@ public class DvdRepositoryModel {
     private String name;
     @Column(name = "genre")
     private String genre;
+    @Column(name = "quantity")
+    private Long quantity;
 
-    public DvdRepositoryModel(String name, String genre) {
+    public DvdRepositoryModel(String name, String genre, Long quantity) {
         this.name = name;
         this.genre = genre;
+        this.quantity = quantity;
     }
 }

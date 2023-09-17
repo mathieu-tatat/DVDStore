@@ -5,9 +5,10 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class DvdStoreGetDTO {
-    public String name;
-    public String genre;
-    public Long quantity;
+public class ClientGetDTO {
+
+    public String nom;
+    public String prenom;
+    public String telephone;
     public Long id;
 }

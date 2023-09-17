@@ -7,9 +7,9 @@ import lombok.Value;
 @Data
 @Value
 @AllArgsConstructor
-public class DvdStoreDTO {
-    private String name;
-    private String genre;
-    private Long quantity;
-}
+public class ClientDTO {
+    public String nom;
+    public String prenom;
+    public String telephone;
 
+}
