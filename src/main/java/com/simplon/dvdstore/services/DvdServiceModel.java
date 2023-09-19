@@ -10,10 +10,8 @@ import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DvdServiceModel {
-
     private String name;
     private String genre;
     private Long quantity;
     private Optional <Long> id;
-
 }
