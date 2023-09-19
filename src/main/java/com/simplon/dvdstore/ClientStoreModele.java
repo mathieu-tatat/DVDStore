@@ -13,5 +13,4 @@ import java.util.List;
 @Data
 public class ClientStoreModele {
     List<ClientRepository> clients = new ArrayList<>();
-
 }

@@ -24,7 +24,6 @@ public class ClientStoreService {
         return clientServiceModeles;
     }
 
-
     public boolean add(ClientServiceModele clientServiceModele) {
         ClientRepository clientRepository = new ClientRepository(clientServiceModele.getNom(), clientServiceModele.getPrenom(), clientServiceModele.getTelephone());
        ClientRepository clientRepositoryReturned = clientRepositoryInterface.save(clientRepository);
@@ -57,5 +56,4 @@ public class ClientStoreService {
 
     public void delete(Long id) {
         clientRepositoryInterface.deleteById(id);}
-
 }

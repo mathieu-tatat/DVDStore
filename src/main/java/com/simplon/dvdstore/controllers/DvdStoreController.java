@@ -53,6 +53,5 @@ public class DvdStoreController {
         return dvdStoreService.update(id, new DvdServiceModel(dvdStoreDTO.getName(), dvdStoreDTO.getGenre(), dvdStoreDTO.getQuantity(), Optional.ofNullable(id)));
     }
 
-
 }
 

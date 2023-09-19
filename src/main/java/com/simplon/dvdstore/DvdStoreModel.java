@@ -13,6 +13,5 @@ import java.util.List;
 @Setter
 @Data
 public class DvdStoreModel {
-
     List<DvdRepositoryModel> dvds = new ArrayList<>();
 }
