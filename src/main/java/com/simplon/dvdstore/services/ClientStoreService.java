@@ -36,6 +36,8 @@ public class ClientStoreService {
         return new ClientServiceModele(clientRepository.getNom(), clientRepository.getPrenom(),clientRepository.getTelephone(), Optional.ofNullable(clientRepository.getId()));
     }
 
+
+
     public ClientServiceModele getClientByName(String nom) {
         ClientRepository clientRepository = clientRepositoryInterface.findByNom(nom).get(0);
         return new ClientServiceModele(clientRepository.getNom(), clientRepository.getPrenom(),clientRepository.getTelephone(), Optional.ofNullable(clientRepository.getId()));

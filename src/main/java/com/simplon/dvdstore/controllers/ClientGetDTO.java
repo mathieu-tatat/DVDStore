@@ -10,4 +10,13 @@ public class ClientGetDTO {
     public String prenom;
     public String telephone;
     public Long id;
+
+    public ClientGetDTO() {
+
+    }
+
+        public ClientGetDTO(String jsonString) {
+            // Implémentez la logique pour désérialiser la chaîne JSON ici
+        }
+
 }

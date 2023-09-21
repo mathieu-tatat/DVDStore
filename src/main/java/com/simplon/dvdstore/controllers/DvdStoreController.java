@@ -20,7 +20,7 @@ public class DvdStoreController {
         ArrayList<DvdStoreGetDTO> dvdStoreDTOs = new ArrayList<>();
         ArrayList<DvdServiceModel> dvdServiceModelArrayList = dvdStoreService.getAll();
         for (DvdServiceModel x : dvdServiceModelArrayList) {
-            dvdStoreDTOs.add(new DvdStoreGetDTO(x.getName(), x.getGenre(),x.getQuantity(), x.getId().get()));
+            dvdStoreDTOs.add(new DvdStoreGetDTO(x.getName(), x.getGenre(),x.getQuantity(),x.getPrix(), x.getId().get()));
         }
         return dvdStoreDTOs;
     }
@@ -28,18 +28,18 @@ public class DvdStoreController {
     @GetMapping("/{id}")
     public DvdStoreGetDTO getDvdById(@PathVariable Long id) {
         DvdServiceModel dvdServiceModel = dvdStoreService.getDvdById(id);
-        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(), dvdServiceModel.getId().get());
+        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getId().get());
     }
 
     @GetMapping("/name/{name}")
     public DvdStoreGetDTO getDvdByName(@PathVariable String name) {
         DvdServiceModel dvdServiceModel = dvdStoreService.getDvdByName(name);
-        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(), dvdServiceModel.getId().get());
+        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(),dvdServiceModel.getPrix(), dvdServiceModel.getId().get());
     }
 
     @PostMapping
     public boolean add(@RequestBody DvdStoreGetDTO dvdStoreGetDTO) {
-        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdStoreGetDTO.getName(), dvdStoreGetDTO.getGenre(),dvdStoreGetDTO.getQuantity(), Optional.ofNullable(dvdStoreGetDTO.getId()));
+        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdStoreGetDTO.getName(), dvdStoreGetDTO.getGenre(),dvdStoreGetDTO.getQuantity(),dvdStoreGetDTO.getPrix(), Optional.ofNullable(dvdStoreGetDTO.getId()));
         return dvdStoreService.add(dvdServiceModel);
     }
 
@@ -50,7 +50,7 @@ public class DvdStoreController {
 
     @PutMapping("/update/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdStoreDTO dvdStoreDTO) {
-        return dvdStoreService.update(id, new DvdServiceModel(dvdStoreDTO.getName(), dvdStoreDTO.getGenre(), dvdStoreDTO.getQuantity(), Optional.ofNullable(id)));
+        return dvdStoreService.update(id, new DvdServiceModel(dvdStoreDTO.getName(), dvdStoreDTO.getGenre(), dvdStoreDTO.getQuantity(),dvdStoreDTO.getPrix(), Optional.ofNullable(id)));
     }
 
 }
