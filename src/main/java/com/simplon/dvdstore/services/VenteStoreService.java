@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -23,13 +23,21 @@ public class VenteStoreService {
 
 
     public ArrayList<VenteServiceModele> getAll() {
+
         ArrayList<VenteServiceModele> venteServiceModeles = new ArrayList<>();
-        ArrayList<VenteRepository> venteRepositoryArrayList =  venteRepositoryInterface.findAll();
-        for (VenteRepository x : venteRepositoryArrayList) {
-            venteServiceModeles.add(new VenteServiceModele(x.getDate(), x.getMontant(),x.getQuantiteVendue(), Optional.ofNullable( x.getId() ) ));
+        ArrayList<VenteRepository> venteRepositorys =  venteRepositoryInterface.findAll();
+        for (VenteRepository x : venteRepositorys) {
+
+            DvdServiceModel dvdServiceModel = new DvdServiceModel(x.getDvdRepositoryModel().getName(), x.getDvdRepositoryModel().getGenre(), x.getDvdRepositoryModel().getQuantity(), x.getDvdRepositoryModel().getPrix(), Optional.ofNullable(x.getDvdRepositoryModel().getId()));
+
+            ClientServiceModele clientServiceModele = new ClientServiceModele(x.getClientRepository().getNom(), x.getClientRepository().getPrenom(), x.getClientRepository().getTelephone(), Optional.ofNullable(x.getClientRepository().getId()));
+
+            venteServiceModeles.add(new VenteServiceModele(x.getDate(), x.getMontant(),x.getQuantiteVendue(), Optional.of(x.getId()) , Optional.of(clientServiceModele), Optional.of(dvdServiceModel),true));
         }
-        return venteServiceModeles;
-    }
+
+          return venteServiceModeles;
+        }
+
 
     public boolean add(VenteServiceModele venteServiceModele) {
 
@@ -37,13 +45,17 @@ public class VenteStoreService {
 
         DvdRepositoryModel dvd = dvdRepositoryInterface.getDvdById(venteServiceModele.getId_dvd().get());
 
-        VenteRepository venteRepository = new VenteRepository(venteServiceModele.getDate(), venteServiceModele.getMontant(), venteServiceModele.getQuantiteVendue(), client, dvd);
+
+        Float montant = venteServiceModele.getQuantiteVendue() * dvd.getPrix();
+
+        VenteRepository venteRepository = new VenteRepository(venteServiceModele.getDate(), montant, venteServiceModele.getQuantiteVendue(), client, dvd);
 
        VenteRepository venteRepositoryReturned = venteRepositoryInterface.save(venteRepository);
 
         return venteRepositoryReturned != null;
     }
 
+    /*
     public VenteServiceModele getVenteById(Long id) {
         VenteRepository venteRepository = venteRepositoryInterface.findById(id).get();
         return new VenteServiceModele(venteRepository.getDate(), venteRepository.getMontant(),venteRepository.getQuantiteVendue(), Optional.ofNullable( venteRepository.getId() ) );
@@ -63,5 +75,5 @@ public class VenteStoreService {
 
     public void delete(Long id) {
         venteRepositoryInterface.deleteById(id);}
-
+*/
 }

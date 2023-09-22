@@ -3,6 +3,8 @@ package com.simplon.dvdstore.controllers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Optional;
+
 @Data
 @AllArgsConstructor
 public class DvdStoreGetDTO {
@@ -11,11 +13,4 @@ public class DvdStoreGetDTO {
     public Long quantity;
     public Float prix;
     public Long id;
-
-
-    public DvdStoreGetDTO(String jsonString) {
-        // Implémentez la logique pour désérialiser la chaîne JSON ici
-
-
-    }
 }

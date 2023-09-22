@@ -3,6 +3,8 @@ package com.simplon.dvdstore.controllers;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Optional;
+
 @Data
 @AllArgsConstructor
 public class ClientGetDTO {
@@ -15,8 +17,10 @@ public class ClientGetDTO {
 
     }
 
-        public ClientGetDTO(String jsonString) {
-            // Implémentez la logique pour désérialiser la chaîne JSON ici
-        }
-
+    public ClientGetDTO(String nom, String prenom, String telephone, Optional<Long> id) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.telephone = telephone;
+        this.id = id.orElse(null);
+    }
 }

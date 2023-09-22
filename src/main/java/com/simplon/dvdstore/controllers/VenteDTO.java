@@ -11,11 +11,9 @@ import java.time.LocalDate;
 @Data
 @Value
 @AllArgsConstructor
-public class VenteDTO {
 
+public class VenteDTO {
     public LocalDate date;
     public Float montant;
     public int quantiteVendue;
-
-
 }

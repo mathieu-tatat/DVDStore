@@ -15,6 +15,7 @@ public class DvdStoreService {
     @Autowired
     DvdRepositoryInterface dvdRepositoryInterface;
 
+
     public boolean add(DvdServiceModel dvdServiceModel) {
         DvdRepositoryModel dvdRepositoryModel = new DvdRepositoryModel(dvdServiceModel.getName(), dvdServiceModel.getGenre(), dvdServiceModel.getQuantity(), dvdServiceModel.getPrix());
         DvdRepositoryModel dvdRepositoryModelReturned = dvdRepositoryInterface.save(dvdRepositoryModel);
@@ -36,6 +37,7 @@ public class DvdStoreService {
     }
 
     public ArrayList<DvdServiceModel> getAll() {
+
         ArrayList<DvdServiceModel> dvdServiceModels = new ArrayList<>();
         ArrayList<DvdRepositoryModel> dvdRepositoryModelsArrayList = dvdRepositoryInterface.findAll();
         for (DvdRepositoryModel x : dvdRepositoryModelsArrayList) {

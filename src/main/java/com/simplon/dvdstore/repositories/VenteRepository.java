@@ -8,11 +8,10 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.time.LocalDate;
-import java.util.Optional;
-
 
 @Entity
 @NoArgsConstructor
@@ -27,7 +26,7 @@ public class VenteRepository {
 
     @CreationTimestamp
     @Column(name = "date")
-    private LocalDate date ;
+    private LocalDate date;
 
     @Column(name = "montant")
     private Float montant ;
@@ -56,9 +55,5 @@ public class VenteRepository {
     }
 
 
-    public VenteRepository(LocalDate date, Float montant, int quantiteVendue, String nom, Float prix) {
-    }
 
-    public VenteRepository(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<Long> id1) {
-    }
 }

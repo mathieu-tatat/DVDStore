@@ -1,7 +1,10 @@
 package com.simplon.dvdstore.services;
+import com.simplon.dvdstore.controllers.ClientGetDTO;
+import com.simplon.dvdstore.controllers.DvdStoreGetDTO;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Optional;
 
 @Data
@@ -20,16 +23,16 @@ public class VenteServiceModele {
     private Optional<Long> id_client;
     private Optional<Long> id_dvd;
 
-    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<Long> id_client, Optional<Long> id_dvd) {
+
+    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id) {
         this.date = date;
         this.montant = montant;
         this.quantiteVendue = quantiteVendue;
         this.id = id;
-        this.id_client = id_client;
-        this.id_dvd = id_dvd;
+
     }
 
-    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<ClientServiceModele> client, Optional<DvdServiceModel> dvd,boolean bool) {
+    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<ClientServiceModele> client, Optional<DvdServiceModel> dvd, boolean withObjects) {
         this.date = date;
         this.montant = montant;
         this.quantiteVendue = quantiteVendue;
@@ -38,10 +41,12 @@ public class VenteServiceModele {
         this.dvd = dvd;
     }
 
-    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id) {
+    public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<Long> id_client, Optional<Long> id_dvd) {
         this.date = date;
         this.montant = montant;
         this.quantiteVendue = quantiteVendue;
         this.id = id;
+        this.id_client = id_client;
+        this.id_dvd = id_dvd;
     }
 }

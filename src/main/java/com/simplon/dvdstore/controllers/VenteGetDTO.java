@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-import java.sql.Date;
+
 import java.time.LocalDate;
-import java.util.Optional;
+
 
 
 @Data
@@ -21,18 +21,15 @@ public class VenteGetDTO {
     public Float montant;
     public int quantiteVendue;
     public Long id;
-
     public Long id_client;
+    public Long id_dvd;
 
-    public Long  id_dvd;
-
-
-    public VenteGetDTO(LocalDate date, Float montant, int quantiteVendue, Long id, ClientServiceModele clientServiceModele, DvdServiceModel dvdServiceModel) {
-    }
-
-public VenteGetDTO(LocalDate date, Float montant, int quantiteVendue, Long id, ClientGetDTO clientGetDTO, DvdStoreGetDTO dvdStoreGetDTO) {
-    }
-
-    public VenteGetDTO(LocalDate date, Float montant, int quantiteVendue, Long id) {
+    public VenteGetDTO(LocalDate date, Float montant, int quantiteVendue, Long aLong, ClientServiceModele clientServiceModele, DvdServiceModel dvdServiceModel) {
+        this.date = date;
+        this.montant = montant;
+        this.quantiteVendue = quantiteVendue;
+        this.id = aLong;
+        this.id_client = clientServiceModele.getId().get();
+        this.id_dvd = dvdServiceModel.getId().get();
     }
 }

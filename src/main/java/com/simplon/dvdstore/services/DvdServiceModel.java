@@ -16,6 +16,4 @@ public class DvdServiceModel {
     private Long quantity;
     public Float prix;
     private Optional <Long> id;
-
-
 }
