@@ -14,6 +14,6 @@ public interface ClientRepositoryInterface extends CrudRepository<ClientReposito
     ArrayList<ClientRepository> findAll();
 
     ClientRepository save(ClientRepository clientRepository);
-   ClientRepository getClientById(Long id);
+    ClientRepository getClientById(Long id);
     ArrayList<ClientRepository> findByNom(String nom);
 }

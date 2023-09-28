@@ -28,9 +28,9 @@ public class VenteStoreService {
         ArrayList<VenteRepository> venteRepositorys =  venteRepositoryInterface.findAll();
         for (VenteRepository x : venteRepositorys) {
 
-            DvdServiceModel dvdServiceModel = new DvdServiceModel(x.getDvdRepositoryModel().getName(), x.getDvdRepositoryModel().getGenre(), x.getDvdRepositoryModel().getQuantity(), x.getDvdRepositoryModel().getPrix(), Optional.ofNullable(x.getDvdRepositoryModel().getId()));
+            DvdServiceModel dvdServiceModel = new DvdServiceModel(x.getDvdRepositoryModel().getName(), x.getDvdRepositoryModel().getGenre(), x.getDvdRepositoryModel().getQuantity(), x.getDvdRepositoryModel().getPrix(), x.getDvdRepositoryModel().getPhoto(), Optional.ofNullable(x.getDvdRepositoryModel().getId()));
 
-            ClientServiceModele clientServiceModele = new ClientServiceModele(x.getClientRepository().getNom(), x.getClientRepository().getPrenom(), x.getClientRepository().getTelephone(), Optional.ofNullable(x.getClientRepository().getId()));
+            ClientServiceModele clientServiceModele = new ClientServiceModele(x.getClientRepository().getNom(), x.getClientRepository().getPrenom(), x.getClientRepository().getTelephone(),Optional.ofNullable(x.getClientRepository().getId()));
 
             venteServiceModeles.add(new VenteServiceModele(x.getDate(), x.getMontant(),x.getQuantiteVendue(), Optional.of(x.getId()) , Optional.of(clientServiceModele), Optional.of(dvdServiceModel),true));
         }

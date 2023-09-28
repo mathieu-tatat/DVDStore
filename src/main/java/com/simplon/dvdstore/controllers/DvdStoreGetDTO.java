@@ -12,5 +12,6 @@ public class DvdStoreGetDTO {
     public String genre;
     public Long quantity;
     public Float prix;
+    public String photo;
     public Long id;
 }

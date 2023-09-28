@@ -1,5 +1,6 @@
 package com.simplon.dvdstore.services;
 
+import jakarta.persistence.Lob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,5 +16,6 @@ public class DvdServiceModel {
     private String genre;
     private Long quantity;
     public Float prix;
+    public String photo;
     private Optional <Long> id;
 }

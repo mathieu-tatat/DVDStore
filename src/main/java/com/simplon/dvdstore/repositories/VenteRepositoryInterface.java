@@ -15,7 +15,5 @@ public interface VenteRepositoryInterface extends CrudRepository<VenteRepository
     ArrayList<VenteRepository> findAll();
 
     VenteRepository save(VenteRepository venteRepository);
-
-
-
+    
 }
