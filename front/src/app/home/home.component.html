@@ -1,0 +1,33 @@
+<div class="absolute h-124 flex flex-wrap  justify-between w-9/12  ml-80 top-64 overflow-hidden overflow-scroll ">
+
+  <!-- first card -->
+  <div *ngFor="let dvds of dvds" class=" flex w-80 h-60 max-w-xs mb-12 overflow-hidden justify-center rounded-lg border border-fumee bg-fumee shadow-md" >
+    
+    <div class="w-1/2 relative mx-auto justify-center flex h-60 overflow-hidden rounded-xl"> 
+      <a href="/newdvd/?filter={{dvds.id}}"><img class="object-cover" src="{{dvds.photo}}" alt="image jacket"></a>
+    </div>
+
+    <div class=" px-2 w-1/2 flex flex-col  ">
+      <a href="/newdvd/?filter={{dvds.id}}"><h5 class=" tracking-tight text-slate-900 text-xl flex justify-center font-semibold mt-16 mb-2" >{{dvds.name}}</h5></a>
+      <p>
+        <a href="/newdvd/?filter={{dvds.id}}"><span class=" text-basic-400 flex text-s justify-center mb-8">{{dvds.genre}} </span></a>
+      </p>
+      <div class=" flex bg-granny-400 rounded-full ml-16 w-16 justify-end border-solid border-2 border-basic-400">
+        <p>
+          <a href="/newdvd/?filter={{dvds.id}}"><span class=" text-fumee text-l font-bold text-slate-900">{{dvds.prix}}</span></a>
+        </p>
+        <p class="relative flex left-4">€</p>
+      </div>
+      <div class="flex items-center justify-end">
+        <p>
+          <span class="text-xs text-slate-900">{{'stock: '+dvds.quantity}}</span>
+        </p>
+      </div>
+      <div class="flex items-center justify-start">
+        <p>
+          <span class="text-xs text-slate-900 font-bold"><a href="/newdvd/?filter={{dvds.id}}">voir +</a></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

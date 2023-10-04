@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Repository
 public interface DvdRepositoryInterface extends CrudRepository<DvdRepositoryModel, Long> {
         ArrayList<DvdRepositoryModel> findAll();
-        ArrayList<DvdRepositoryModel> getDvdById(Long id);
+       DvdRepositoryModel getDvdById(Long id);
         ArrayList<DvdRepositoryModel> findByName(String name);
         DvdRepositoryModel save(DvdRepositoryModel dvdRepositoryModel);
 }
