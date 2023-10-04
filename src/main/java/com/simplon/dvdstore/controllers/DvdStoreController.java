@@ -27,38 +27,9 @@ public class DvdStoreController {
 
     @PostMapping
     public boolean add(@RequestBody DvdStoreGetDTO dvdStoreGetDTO) {
-        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdStoreGetDTO.getName(), dvdStoreGetDTO.getGenre(),dvdStoreGetDTO.getQuantity(),dvdStoreGetDTO.getPrix(), dvdStoreGetDTO.getPhoto(),Optional.ofNullable(dvdStoreGetDTO.getId()));
+        DvdServiceModel dvdServiceModel = new DvdServiceModel(dvdStoreGetDTO.getName(), dvdStoreGetDTO.getGenre(),dvdStoreGetDTO.getQuantity(),dvdStoreGetDTO.getPrix(), dvdStoreGetDTO.getPhoto(),dvdStoreGetDTO.getDescription(), Optional.ofNullable(dvdStoreGetDTO.getId()));
         return dvdStoreService.add(dvdServiceModel);
     }
-/*
-    @PostMapping
-    public boolean add(@RequestParam("photoFile") MultipartFile photoFile, @RequestParam  ("name") String name, @RequestParam  ("genre") String genre,@RequestParam  ("quantity") Long quantity, @RequestParam  ("prix") Float prix ) {
-        try {
-            // Vérifiez que le fichier photo n'est pas vide
-            if (!photoFile.isEmpty()) {
-                // Générez un nom de fichier unique pour éviter les conflits
-                String uniqueFileName = UUID.randomUUID().toString() + "_" + photoFile.getOriginalFilename();
-
-                // Définissez le chemin de destination pour sauvegarder la photo
-                Path uploadPath = Paths.get("../front/src/assets");
-
-                // Copiez le fichier vers le dossier de destination
-                Files.copy(photoFile.getInputStream(), uploadPath.resolve(uniqueFileName));
-
-                // Enregistrez les détails du DVD en base de données, y compris le nom du fichier photo
-                DvdServiceModel dvdServiceModel = new DvdServiceModel(name, genre, quantity, prix, uniqueFileName, null);
-                return dvdStoreService.add(dvdServiceModel);
-            } else {
-                // Gérez le cas où aucun fichier n'a été téléchargé
-                return false;
-            }
-        } catch (IOException e) {
-            // Gérez les exceptions liées au téléchargement de la photo
-            e.printStackTrace();
-            return false;
-        }
-
-    }*/
 
 
     @GetMapping
@@ -66,7 +37,7 @@ public class DvdStoreController {
         ArrayList<DvdStoreGetDTO> dvdStoreDTOs = new ArrayList<>();
         ArrayList<DvdServiceModel> dvdServiceModelArrayList = dvdStoreService.getAll();
         for (DvdServiceModel x : dvdServiceModelArrayList) {
-            dvdStoreDTOs.add(new DvdStoreGetDTO(x.getName(), x.getGenre(),x.getQuantity(),x.getPrix(),x.getPhoto(), x.getId().get()));
+            dvdStoreDTOs.add(new DvdStoreGetDTO(x.getName(), x.getGenre(),x.getQuantity(),x.getPrix(),x.getPhoto(), x.getDescription() ,x.getId().get()));
         }
         return dvdStoreDTOs;
     }
@@ -74,23 +45,23 @@ public class DvdStoreController {
     @GetMapping("/{id}")
     public DvdStoreGetDTO getDvdById(@PathVariable Long id) {
         DvdServiceModel dvdServiceModel = dvdStoreService.getDvdById(id);
-        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getPhoto(),dvdServiceModel.getId().get());
+        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(), dvdServiceModel.getPrix(), dvdServiceModel.getPhoto(), dvdServiceModel.getDescription(), dvdServiceModel.getId().get());
     }
 
     @GetMapping("/name/{name}")
     public DvdStoreGetDTO getDvdByName(@PathVariable String name) {
         DvdServiceModel dvdServiceModel = dvdStoreService.getDvdByName(name);
-        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(),dvdServiceModel.getPrix(), dvdServiceModel.getPhoto(),dvdServiceModel.getId().get());
+        return new DvdStoreGetDTO(dvdServiceModel.getName(), dvdServiceModel.getGenre(),dvdServiceModel.getQuantity(),dvdServiceModel.getPrix(), dvdServiceModel.getPhoto(), dvdServiceModel.getDescription(), dvdServiceModel.getId().get());
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     private void delete(@PathVariable Long id) {
         dvdStoreService.delete(id);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public boolean update(@PathVariable("id") Long id, @RequestBody DvdStoreDTO dvdStoreDTO) {
-        return dvdStoreService.update(id, new DvdServiceModel(dvdStoreDTO.getName(), dvdStoreDTO.getGenre(), dvdStoreDTO.getQuantity(),dvdStoreDTO.getPrix(),dvdStoreDTO.getPhoto(), Optional.ofNullable(id)));
+        return dvdStoreService.update(id, new DvdServiceModel(dvdStoreDTO.getName(), dvdStoreDTO.getGenre(), dvdStoreDTO.getQuantity(),dvdStoreDTO.getPrix(),dvdStoreDTO.getPhoto(), dvdStoreDTO.getDescription(), Optional.ofNullable(id)));
     }
 
 }

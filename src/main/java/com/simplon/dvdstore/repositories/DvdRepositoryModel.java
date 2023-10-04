@@ -2,12 +2,15 @@ package com.simplon.dvdstore.repositories;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.w3c.dom.Text;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Table(name="dvdstore")
@@ -25,6 +28,9 @@ public class DvdRepositoryModel {
     public Float prix;
     @Column(name = "photo")
     public String photo;
+    @Column(name = "description", columnDefinition = "TEXT")
+    public String description;
+
 
     public DvdRepositoryModel(String name, String genre, Long quantity, Float prix) {
         this.name = name;
@@ -40,5 +46,14 @@ public class DvdRepositoryModel {
         this.quantity = quantity;
         this.prix = prix;
         this.photo = photo;
+    }
+
+    public DvdRepositoryModel(String name, String genre, Long quantity, Float prix, String photo,String description) {
+        this.name = name;
+        this.genre = genre;
+        this.quantity = quantity;
+        this.prix = prix;
+        this.photo = photo;
+        this.description = description;
     }
 }
