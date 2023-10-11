@@ -1,4 +1,4 @@
-package com.simplon.dvdstore.controllers;
+package com.simplon.dvdstore.dto;
 
 
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class VenteGetAllDTO {
     public String nom;
 
 
-    public VenteGetAllDTO(LocalDate date, Float montant, int quantiteVendue, Long id, ClientGetDTO clientGetDTO, DvdStoreGetDTO dvdStoreGetDTO) {
+    public VenteGetAllDTO(LocalDate date, Float montant, int quantiteVendue, Long id, ClientGetDTO clientGetDTO, AuthRequestDto.DvdStoreGetDTO dvdStoreGetDTO) {
 
         this.date = date;
         this.montant = montant;

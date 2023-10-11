@@ -1,2 +1,6 @@
-package com.simplon.dvdstore.services.impl;public class LocalStorageService {
+package com.simplon.dvdstore.services.impl;
+
+public class LocalStorageService {
+
+
 }

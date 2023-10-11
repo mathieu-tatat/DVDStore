@@ -1,2 +1,8 @@
-package com.simplon.dvdstore.exceptions;public class AccountExistsException {
+package com.simplon.dvdstore.exceptions;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.CONFLICT, reason = "Account already exists")
+public class AccountExistsException extends Exception{
 }

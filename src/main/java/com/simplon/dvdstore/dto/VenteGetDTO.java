@@ -1,4 +1,4 @@
-package com.simplon.dvdstore.controllers;
+package com.simplon.dvdstore.dto;
 
 import com.simplon.dvdstore.services.ClientServiceModele;
 import com.simplon.dvdstore.services.DvdServiceModel;

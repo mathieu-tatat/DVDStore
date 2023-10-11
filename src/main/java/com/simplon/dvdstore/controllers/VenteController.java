@@ -1,5 +1,9 @@
 package com.simplon.dvdstore.controllers;
 
+import com.simplon.dvdstore.dto.AuthRequestDto;
+import com.simplon.dvdstore.dto.ClientGetDTO;
+import com.simplon.dvdstore.dto.VenteGetAllDTO;
+import com.simplon.dvdstore.dto.VenteGetDTO;
 import com.simplon.dvdstore.services.VenteServiceModele;
 import com.simplon.dvdstore.services.VenteStoreService;
 
@@ -10,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping("ventes")
 public class VenteController {
     @Autowired
@@ -25,7 +29,7 @@ public class VenteController {
 
         for (VenteServiceModele x : venteServiceModeleArrayList) {
 
-            DvdStoreGetDTO dvdStoreGetDTO = new DvdStoreGetDTO(x.getDvd().get().getName(), x.getDvd().get().getGenre(), x.getDvd().get().getQuantity(), x.getDvd().get().getPrix(), x.getDvd().get().getPhoto(), x.getDvd().get().getDescription(),x.getDvd().get().getId().get());
+            AuthRequestDto.DvdStoreGetDTO dvdStoreGetDTO = new AuthRequestDto.DvdStoreGetDTO(x.getDvd().get().getName(), x.getDvd().get().getGenre(), x.getDvd().get().getQuantity(), x.getDvd().get().getPrix(), x.getDvd().get().getPhoto(), x.getDvd().get().getDescription(),x.getDvd().get().getId().get());
 
                 ClientGetDTO clientGetDTO = new ClientGetDTO(x.getClient().get().getNom(), x.getClient().get().getPrenom(), x.getClient().get().getTelephone(), x.getClient().get().getId());
 

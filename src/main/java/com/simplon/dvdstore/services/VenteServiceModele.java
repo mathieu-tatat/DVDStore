@@ -1,10 +1,7 @@
 package com.simplon.dvdstore.services;
-import com.simplon.dvdstore.controllers.ClientGetDTO;
-import com.simplon.dvdstore.controllers.DvdStoreGetDTO;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
 @Data

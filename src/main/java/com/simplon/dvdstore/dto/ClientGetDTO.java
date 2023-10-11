@@ -1,4 +1,4 @@
-package com.simplon.dvdstore.controllers;
+package com.simplon.dvdstore.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

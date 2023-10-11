@@ -1,5 +1,7 @@
 package com.simplon.dvdstore.controllers;
 
+import com.simplon.dvdstore.dto.ClientDTO;
+import com.simplon.dvdstore.dto.ClientGetDTO;
 import com.simplon.dvdstore.services.ClientServiceModele;
 import com.simplon.dvdstore.services.ClientStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping("clients")
 public class ClientController {
 
