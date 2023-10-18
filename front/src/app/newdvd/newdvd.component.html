@@ -60,8 +60,9 @@
                     </div>
                     </div>
                 </div>
+               
+            <div *ngIf="dvd.id" class="flex justify-around mt-6">   
                 <input type="hidden" name="id" [(ngModel)]="dvd.id">
-            <div *ngIf="dvd.id" class="flex justify-around mt-6">  
                 <button id="delete"  class="px-6 py-2 leading-5 text-fumee transition-colors duration-200 transform bg-red-400 rounded-md hover:bg-red-600 focus:outline-none">Supprimer</button>
 
             <button type="submit" id="mofifier" class="px-6 py-2 leading-5 text-fumee transition-colors duration-200 transform bg-granny-400 rounded-md hover:bg-granny-600 focus:outline-none" >Modifier</button>

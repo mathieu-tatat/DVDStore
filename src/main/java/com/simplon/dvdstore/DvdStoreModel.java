@@ -9,9 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * The type Dvd store model.
+ */
 @Getter
 @Setter
 @Data
 public class DvdStoreModel {
+    /**
+     * The Dvds.
+     */
     List<DvdRepositoryModel> dvds = new ArrayList<>();
 }

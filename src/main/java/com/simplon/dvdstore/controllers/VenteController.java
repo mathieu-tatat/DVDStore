@@ -13,14 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * The type Vente controller.
+ */
 @RestController
 @CrossOrigin("*")
 @RequestMapping("ventes")
 public class VenteController {
+    /**
+     * The Vente store service.
+     */
     @Autowired
     VenteStoreService venteStoreService;
 
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @GetMapping
     public ArrayList<VenteGetAllDTO> getAll() {
 
@@ -38,6 +49,12 @@ public class VenteController {
         return venteGetAllDTOs;
     }
 
+    /**
+     * Add boolean.
+     *
+     * @param venteGetDTO the vente get dto
+     * @return the boolean
+     */
     @PostMapping
     public  boolean add(@RequestBody VenteGetDTO venteGetDTO) {
         VenteServiceModele venteServiceModel = new VenteServiceModele(venteGetDTO.getDate(), venteGetDTO.getMontant(),venteGetDTO.getQuantiteVendue(),Optional.ofNullable(venteGetDTO.getId()), Optional.ofNullable( venteGetDTO.getId_client() ), Optional.ofNullable(  venteGetDTO.getId_dvd()));

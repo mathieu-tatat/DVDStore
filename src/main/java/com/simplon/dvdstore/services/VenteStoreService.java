@@ -10,25 +10,42 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 
+/**
+ * The type Vente store service.
+ */
 @Service
 public class VenteStoreService {
+    /**
+     * The Vente repository interface.
+     */
     @Autowired
     VenteRepositoryInterface venteRepositoryInterface;
 
+    /**
+     * The Client repository interface.
+     */
     @Autowired
     ClientRepositoryInterface clientRepositoryInterface;
 
+    /**
+     * The Dvd repository interface.
+     */
     @Autowired
     DvdRepositoryInterface dvdRepositoryInterface;
 
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public ArrayList<VenteServiceModele> getAll() {
 
         ArrayList<VenteServiceModele> venteServiceModeles = new ArrayList<>();
         ArrayList<VenteRepository> venteRepositorys =  venteRepositoryInterface.findAll();
         for (VenteRepository x : venteRepositorys) {
 
-            DvdServiceModel dvdServiceModel = new DvdServiceModel(x.getDvdRepositoryModel().getName(), x.getDvdRepositoryModel().getGenre(), x.getDvdRepositoryModel().getQuantity(), x.getDvdRepositoryModel().getPrix(), x.getDvdRepositoryModel().getPhoto(),x.getDvdRepositoryModel().getDescription(), Optional.ofNullable(x.getDvdRepositoryModel().getId()));
+            DvdServiceModel dvdServiceModel = new DvdServiceModel(Optional.ofNullable(x.getDvdRepositoryModel().getId()), x.getDvdRepositoryModel().getName(), x.getDvdRepositoryModel().getGenre(), x.getDvdRepositoryModel().getQuantity(), x.getDvdRepositoryModel().getPrix(), x.getDvdRepositoryModel().getPhoto(),x.getDvdRepositoryModel().getDescription());
 
             ClientServiceModele clientServiceModele = new ClientServiceModele(x.getClientRepository().getNom(), x.getClientRepository().getPrenom(), x.getClientRepository().getTelephone(),Optional.ofNullable(x.getClientRepository().getId()));
 
@@ -39,6 +56,12 @@ public class VenteStoreService {
         }
 
 
+    /**
+     * Add boolean.
+     *
+     * @param venteServiceModele the vente service modele
+     * @return the boolean
+     */
     public boolean add(VenteServiceModele venteServiceModele) {
 
         ClientRepository client = clientRepositoryInterface.getClientById(venteServiceModele.getId_client().get());

@@ -14,6 +14,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
+/**
+ * The type Security configurer.
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -21,17 +24,34 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfigurer
 {
 
+    /**
+     * Security filter security filter.
+     *
+     * @return the security filter
+     */
     @Bean
     public SecurityFilter securityFilter() {
         return new SecurityFilter();
     }
+
+    /**
+     * Password encoder password encoder.
+     *
+     * @return the password encoder
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
 
-
+    /**
+     * Configure security filter chain.
+     *
+     * @param http the http
+     * @return the security filter chain
+     * @throws Exception the exception
+     */
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 // Standard pour les REST API
