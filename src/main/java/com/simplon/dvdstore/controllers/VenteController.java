@@ -1,5 +1,9 @@
 package com.simplon.dvdstore.controllers;
 
+import com.simplon.dvdstore.dto.AuthRequestDto;
+import com.simplon.dvdstore.dto.ClientGetDTO;
+import com.simplon.dvdstore.dto.VenteGetAllDTO;
+import com.simplon.dvdstore.dto.VenteGetDTO;
 import com.simplon.dvdstore.services.VenteServiceModele;
 import com.simplon.dvdstore.services.VenteStoreService;
 
@@ -9,14 +13,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * The type Vente controller.
+ */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin("*")
 @RequestMapping("ventes")
 public class VenteController {
+    /**
+     * The Vente store service.
+     */
     @Autowired
     VenteStoreService venteStoreService;
 
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     @GetMapping
     public ArrayList<VenteGetAllDTO> getAll() {
 
@@ -25,7 +40,7 @@ public class VenteController {
 
         for (VenteServiceModele x : venteServiceModeleArrayList) {
 
-            DvdStoreGetDTO dvdStoreGetDTO = new DvdStoreGetDTO(x.getDvd().get().getName(), x.getDvd().get().getGenre(), x.getDvd().get().getQuantity(), x.getDvd().get().getPrix(), x.getDvd().get().getPhoto(), x.getDvd().get().getDescription(),x.getDvd().get().getId().get());
+            AuthRequestDto.DvdStoreGetDTO dvdStoreGetDTO = new AuthRequestDto.DvdStoreGetDTO(x.getDvd().get().getName(), x.getDvd().get().getGenre(), x.getDvd().get().getQuantity(), x.getDvd().get().getPrix(), x.getDvd().get().getPhoto(), x.getDvd().get().getDescription(),x.getDvd().get().getId().get());
 
                 ClientGetDTO clientGetDTO = new ClientGetDTO(x.getClient().get().getNom(), x.getClient().get().getPrenom(), x.getClient().get().getTelephone(), x.getClient().get().getId());
 
@@ -34,6 +49,12 @@ public class VenteController {
         return venteGetAllDTOs;
     }
 
+    /**
+     * Add boolean.
+     *
+     * @param venteGetDTO the vente get dto
+     * @return the boolean
+     */
     @PostMapping
     public  boolean add(@RequestBody VenteGetDTO venteGetDTO) {
         VenteServiceModele venteServiceModel = new VenteServiceModele(venteGetDTO.getDate(), venteGetDTO.getMontant(),venteGetDTO.getQuantiteVendue(),Optional.ofNullable(venteGetDTO.getId()), Optional.ofNullable( venteGetDTO.getId_client() ), Optional.ofNullable(  venteGetDTO.getId_dvd()));

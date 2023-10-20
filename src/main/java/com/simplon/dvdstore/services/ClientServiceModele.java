@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 import java.util.Optional;
 
 
+/**
+ * The type Client service modele.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

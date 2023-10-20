@@ -10,11 +10,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.ArrayList;
 import java.util.Optional;
 
+/**
+ * The type Client store service.
+ */
 @Service
 public class ClientStoreService {
+    /**
+     * The Client repository interface.
+     */
     @Autowired
     ClientRepositoryInterface clientRepositoryInterface;
 
+    /**
+     * Gets all.
+     *
+     * @return the all
+     */
     public ArrayList<ClientServiceModele> getAll() {
         ArrayList<ClientServiceModele> clientServiceModeles = new ArrayList<>();
         ArrayList<ClientRepository> clientRepositoryArrayList =  clientRepositoryInterface.findAll();
@@ -24,6 +35,12 @@ public class ClientStoreService {
         return clientServiceModeles;
     }
 
+    /**
+     * Add boolean.
+     *
+     * @param clientServiceModele the client service modele
+     * @return the boolean
+     */
     public boolean add(ClientServiceModele clientServiceModele) {
         ClientRepository clientRepository = new ClientRepository(clientServiceModele.getNom(), clientServiceModele.getPrenom(), clientServiceModele.getTelephone());
        ClientRepository clientRepositoryReturned = clientRepositoryInterface.save(clientRepository);
@@ -31,16 +48,35 @@ public class ClientStoreService {
         return clientRepositoryReturned != null;
     }
 
+    /**
+     * Gets client by id.
+     *
+     * @param id the id
+     * @return the client by id
+     */
     public ClientServiceModele getClientById(Long id) {
         ClientRepository clientRepository = clientRepositoryInterface.findById(id).get();
         return new ClientServiceModele(clientRepository.getNom(), clientRepository.getPrenom(),clientRepository.getTelephone(), Optional.ofNullable(clientRepository.getId()));
     }
 
+    /**
+     * Gets client by name.
+     *
+     * @param nom the nom
+     * @return the client by name
+     */
     public ClientServiceModele getClientByName(String nom) {
         ClientRepository clientRepository = clientRepositoryInterface.findByNom(nom).get(0);
         return new ClientServiceModele(clientRepository.getNom(), clientRepository.getPrenom(),clientRepository.getTelephone(), Optional.ofNullable(clientRepository.getId()));
     }
 
+    /**
+     * Update boolean.
+     *
+     * @param id                  the id
+     * @param clientServiceModele the client service modele
+     * @return the boolean
+     */
     public boolean update(@PathVariable Long id, @RequestBody ClientServiceModele clientServiceModele) {
         try {
             ClientRepository clientRepository = clientRepositoryInterface.findById(id).get();
@@ -54,6 +90,11 @@ public class ClientStoreService {
         }
     }
 
+    /**
+     * Delete.
+     *
+     * @param id the id
+     */
     public void delete(Long id) {
         clientRepositoryInterface.deleteById(id);}
 }

@@ -9,10 +9,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // commentaire
 
+/**
+ * The type Dvd strore application.
+ */
 @SpringBootApplication
 public class DvdStroreApplication{
 	private static final Logger log = LoggerFactory.getLogger(DvdRepositoryModel.class);
-	public static void main(String[] args) {
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
 		SpringApplication.run(DvdStroreApplication.class);
 	}
 }

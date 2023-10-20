@@ -13,6 +13,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
+/**
+ * The type Vente repository.
+ */
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,6 +49,15 @@ public class VenteRepository {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private DvdRepositoryModel dvdRepositoryModel;
 
+    /**
+     * Instantiates a new Vente repository.
+     *
+     * @param date               the date
+     * @param montant            the montant
+     * @param quantiteVendue     the quantite vendue
+     * @param clientRepository   the client repository
+     * @param dvdRepositoryModel the dvd repository model
+     */
     public VenteRepository(LocalDate date, Float montant, int quantiteVendue, ClientRepository clientRepository, DvdRepositoryModel dvdRepositoryModel) {
         this.date = date;
         this.montant = montant;

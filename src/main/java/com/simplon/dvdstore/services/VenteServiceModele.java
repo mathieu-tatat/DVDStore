@@ -1,12 +1,12 @@
 package com.simplon.dvdstore.services;
-import com.simplon.dvdstore.controllers.ClientGetDTO;
-import com.simplon.dvdstore.controllers.DvdStoreGetDTO;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * The type Vente service modele.
+ */
 @Data
 @Getter
 @NoArgsConstructor
@@ -24,6 +24,14 @@ public class VenteServiceModele {
     private Optional<Long> id_dvd;
 
 
+    /**
+     * Instantiates a new Vente service modele.
+     *
+     * @param date           the date
+     * @param montant        the montant
+     * @param quantiteVendue the quantite vendue
+     * @param id             the id
+     */
     public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id) {
         this.date = date;
         this.montant = montant;
@@ -32,6 +40,17 @@ public class VenteServiceModele {
 
     }
 
+    /**
+     * Instantiates a new Vente service modele.
+     *
+     * @param date           the date
+     * @param montant        the montant
+     * @param quantiteVendue the quantite vendue
+     * @param id             the id
+     * @param client         the client
+     * @param dvd            the dvd
+     * @param withObjects    the with objects
+     */
     public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<ClientServiceModele> client, Optional<DvdServiceModel> dvd, boolean withObjects) {
         this.date = date;
         this.montant = montant;
@@ -41,6 +60,16 @@ public class VenteServiceModele {
         this.dvd = dvd;
     }
 
+    /**
+     * Instantiates a new Vente service modele.
+     *
+     * @param date           the date
+     * @param montant        the montant
+     * @param quantiteVendue the quantite vendue
+     * @param id             the id
+     * @param id_client      the id client
+     * @param id_dvd         the id dvd
+     */
     public VenteServiceModele(LocalDate date, Float montant, int quantiteVendue, Optional<Long> id, Optional<Long> id_client, Optional<Long> id_dvd) {
         this.date = date;
         this.montant = montant;

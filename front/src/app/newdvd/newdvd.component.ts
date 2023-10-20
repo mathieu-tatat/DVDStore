@@ -56,17 +56,17 @@ export class NewdvdComponent implements OnInit {
   }
 
   formulaire(form: NgForm){
-    console.log(form.value);
-    if(form.valid){
+  
+    if(form.valid){ 
       this.newDvdService.addOrUpdate(this.dvd).subscribe(()=> {
+        //this.router.navigate(['/home']);
         console.log('dvd modifié');
-        this.router.navigate(['/home']);
       });
     }else{
-      
+      console.log(form.value);
       this.newDvdService.addOrUpdate(this.dvd).subscribe(()=> {
+        //this.router.navigate(['/home']);
         console.log('dvd ajouté');
-        this.router.navigate(['/home']);
       } );
     }
   }

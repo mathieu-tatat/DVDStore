@@ -25,5 +25,6 @@ export class HomeService {
   return this.http.get("http://localhost:80/dvds") as Observable<Array<Dvd>>;
 
   }
+  
 
 }

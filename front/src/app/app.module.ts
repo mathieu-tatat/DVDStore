@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewdvdComponent } from './newdvd/newdvd.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NewdvdComponent } from './newdvd/newdvd.component';
     NavComponent,
     FooterComponent,
     HomeComponent,
-    NewdvdComponent
+    NewdvdComponent,
+    LoginComponent
   
   ],
   imports: [

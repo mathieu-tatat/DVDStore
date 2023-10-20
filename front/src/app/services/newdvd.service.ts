@@ -20,7 +20,7 @@ export interface DvdGetDto{
 })
 export class NewdvdService {
 
-  detail: number | undefined;
+  detail: any;
   constructor(private http: HttpClient, private router: Router) {
 
     this.router.events.subscribe( (val: any) => {
@@ -28,6 +28,7 @@ export class NewdvdService {
       var id = val.url.split('=')[1];
       this.detail=id;
       }});
+      console.log(this.detail);
     }
 
   getDvdById(id: number): Observable<DvdGetDto>{
@@ -42,7 +43,7 @@ export class NewdvdService {
     }
   }
 
-  add(newDvd: DvdGetDto): Observable<DvdGetDto>{
+  private add(newDvd: DvdGetDto): Observable<DvdGetDto>{
     return this.http.post(`http://localhost:80/dvds`, newDvd ) as Observable<DvdGetDto>;
   }
 

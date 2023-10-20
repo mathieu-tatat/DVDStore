@@ -31,9 +31,9 @@
     </div>
     
     <div class="w-1/5 flex justify-center pl-20">
-        <img src="./assets/Vector.png" class="w-8"alt="" srcset="">
+      <a *ngIf="!isAuthenticated" href="/login" title="Connexion"><button><img src="./assets/Vector.png" class="w-8" alt="Connexion"></button></a>
+      <a  *ngIf="isAuthenticated" (click)="logout()" href="/home" title="Deconnexion"><button><img src="./assets/deco.svg" class="w-8" alt="Deconnexion" ></button></a>
     </div>
-
   </nav>
   
   <!--Container-->
@@ -45,11 +45,11 @@
 
     <div class="bg-fumee h-16 w-4/5 mt-44 border-solid border-2 border-gray-500"> 
       <ul class="flex text-center text-basic-400 font-semibold justify-between ">
-        <li class="w-1/5 h-15.5  hover:bg-granny-400 hover:text-fumee "><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="home">Accueil</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="home">Accueil</a></li>
         <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">DVDs</a></li>
-        <li class="w-1/5 h-15.5  hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Clients</a></li>
-        <li class="w-1/5 h-15.5  hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Ventes</a></li>
-        <li class="w-1/5 h-15.5  hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="newdvd">+AddDvd</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Clients</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Ventes</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="/newdvd">+AddDvd</a></li>
       </ul>
     </div>
 
