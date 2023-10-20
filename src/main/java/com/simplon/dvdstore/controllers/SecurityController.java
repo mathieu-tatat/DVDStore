@@ -16,11 +16,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * The type Security controller.
+ */
 @RestController
 @CrossOrigin("*")
 public class SecurityController {
     @Autowired
     private JwtUserService userService;
+
+    /**
+     * Register response entity.
+     *
+     * @param dto the dto
+     * @return the response entity
+     * @throws AccountExistsException the account exists exception
+     */
     @PostMapping("/register")
     public ResponseEntity<AuthResponseDto> register(@RequestBody AuthRequestDto dto) throws AccountExistsException {
         UserDetails user = userService.save(dto.getUsername(),
@@ -30,6 +41,13 @@ public class SecurityController {
     }
 //Remarque : ajouter un nouvel utilisateur et génère un JWT à la volée
 
+    /**
+     * Authorize response entity.
+     *
+     * @param requestDto the request dto
+     * @return the response entity
+     * @throws UnauthorizedException the unauthorized exception
+     */
     @PostMapping("/authorize")
     public ResponseEntity<AuthResponseDto> authorize(@RequestBody AuthRequestDto requestDto) throws UnauthorizedException {
         Authentication authentication = null;

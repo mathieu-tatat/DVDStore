@@ -8,6 +8,9 @@ import lombok.Setter;
 
 import java.util.Map;
 
+/**
+ * The type Client repository.
+ */
 @Entity
 @NoArgsConstructor
 @Getter
@@ -24,6 +27,13 @@ public class ClientRepository {
     @Column(name="telephone")
     private String telephone;
 
+    /**
+     * Instantiates a new Client repository.
+     *
+     * @param nom       the nom
+     * @param prenom    the prenom
+     * @param telephone the telephone
+     */
     public ClientRepository(String nom, String prenom, String telephone) {
         this.nom = nom;
         this.prenom = prenom;
