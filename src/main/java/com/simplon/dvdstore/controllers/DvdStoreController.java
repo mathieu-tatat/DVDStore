@@ -34,7 +34,6 @@ public class DvdStoreController {
      * @param dvdStoreGetDTO the dvd store get dto
      * @return the boolean
      */
-
     @PostMapping
     public boolean add(@RequestBody AuthRequestDto.DvdStoreGetDTO dvdStoreGetDTO) {
         DvdServiceModel dvdServiceModel = new DvdServiceModel(Optional.ofNullable(dvdStoreGetDTO.getId()), dvdStoreGetDTO.getName(), dvdStoreGetDTO.getGenre(),dvdStoreGetDTO.getQuantity(),dvdStoreGetDTO.getPrix(), dvdStoreGetDTO.getPhoto(),dvdStoreGetDTO.getDescription());
