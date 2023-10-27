@@ -1,0 +1,86 @@
+
+<nav class="flex items-center justify-between flex-wrap bg-granny-400 h-44 p-6 fixed w-full z-10 top-0">
+
+    <div class="w-1/5 flex item-center text-center">
+      <a routerLink="home"><img src="./assets/logoVintage.png" class="w-32"alt="" srcset=""></a>
+    </div>
+
+    <div class="w-3/5 flex item-center flex-wrap flex-col font-semibold text-center">
+      <h1 class="text-4xl text-basic-400">
+        Studio Vintage
+      </h1>
+      <h4 class="text-2xl text-basic-400 font-semibold">
+        Spécialiste en soirées DVD
+      </h4>
+      <div class="w-full mx-auto">
+
+        <form>   
+              <div class="relative">
+                  <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                      <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                  </div>
+                  <input type="search" id="default-search" class="block p-4 pl-10 w-full text-sm text-gray-900 bg-fumee rounded-full border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-basic-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder=" Film recherché" required>
+
+                  <button type="submit" class="text-fumee absolute item-center text-center right-2.5  bottom-2.5 bg-granny-400 hover:bg-granny-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Recherche</button>
+
+              </div>
+          </form>
+      
+          <script src="https://unpkg.com/flowbite@1.4.0/dist/flowbite.js"></script>
+      </div>
+
+    </div>
+    
+    <div class="w-1/5 flex justify-center pl-20">
+      <a *ngIf="!isAuthenticated" href="/login" title="Connexion"><button><img src="./assets/Vector.png" class="w-8" alt="Connexion"></button></a>
+      <a  *ngIf="isAuthenticated" (click)="logout()" href="/home" title="Deconnexion"><button><img src="./assets/deco.svg" class="w-8" alt="Deconnexion" ></button></a>
+    </div>
+  </nav>
+
+  <!--Container-->
+  <div class="flex flex-row w-full">
+    <div class="w-1/5 ml-0 p-4 flex justify-center bg-range-400 text-fumee text-xl mt-44 h-16 ">
+      <a routerLink="home" class="flex flex-row"><img class="w-8 h-8 flex  item-center mr-2 " src="./assets/burger.png" type="">
+      <p class="flex justify-center align-center font-semibold ">Tout les Genres </p></a>
+    </div>
+
+    <div class="bg-fumee h-16 w-4/5 mt-44 border-solid border-2 border-gray-500"> 
+      <ul class="flex text-center text-basic-400 font-semibold justify-between ">
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="home">Accueil</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">DVDs</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Clients</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" href="#">Ventes</a></li>
+        <li class="w-1/5 h-15.5 hover:bg-granny-400 hover:text-fumee"><a class="focus:outline-none focus:bg-granny-400 focus:text-fumee  flex h-15.5  justify-center items-center" routerLink="/newdvd">+AddDvd</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!--Liste films-->
+  <!--href="?filter=Action"-->
+ 
+  <div class=" w-1/5 ml-0  bg-range-100 mt-0 h-124  overflow-hidden overflow-scroll ">
+    <div class="flex flex-col ">
+    <a href="/home/?filter=Action" class="focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5 nav-link"><p class="p-4 text-xl  hover:text-fumee">Action</p></a> 
+    <a href="/home/?filter=Drame" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Drame</p></a> 
+    <a href="/home/?filter=Comedie" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Comedie</p></a> 
+    <a href="/home/?filter=Fantastique" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Fantastique</p></a> 
+    <a href="/home/?filter=Horreur" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Horreur</p></a> 
+    <a href="/home/?filter=Policier" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Policier</p></a> 
+    <a href="/home/?filter=Science-Fiction" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Science-fiction</p></a> 
+    <a href="/home/?filter=Triller" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Thriller</p></a> 
+    <a href="/home/?filter=Action" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Action</p></a> 
+    <a href="/home/?filter=Aventure" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Aventure</p></a> 
+    <a href="/home/?filter=Comedie" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Comedie</p></a> 
+    <a href="/home/?filter=Drame" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Drame</p></a> 
+    <a href="/home/?filter=Fantastique" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Fantastique</p></a> 
+    <a href="/home/?filter=Horreur" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Horreur</p></a> 
+    <a href="/home/?filter=Policier" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Policier</p></a> 
+    <a href="/home/?filter=Science-Fiction" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5"><p class="p-4 text-xl  hover:text-fumee">Science-fiction</p></a> 
+    <a href="/home/?filter=Thriller" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Thriller</p></a> 
+    <a href="/home/?filter=Aventure" class="focus:outline-none focus:bg-range-400 text-basic-400 focus:text-fumee flex justify-center w-5/5" ><p class="p-4 text-xl  hover:text-fumee">Aventure</p></a> 
+  </div>
+
+
+
+
